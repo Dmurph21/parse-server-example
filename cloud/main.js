@@ -1,7 +1,5 @@
 
-Parse.Cloud.define('hello', function(req, res) {
-  res.success('Hi');
-});
+
 
 Parse.Cloud.beforeSave("Notification", function(request, response) {
     var notify = request.object;
