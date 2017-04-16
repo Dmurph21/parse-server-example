@@ -12,14 +12,28 @@ if (!databaseUri) {
 }
 
 var api = new ParseServer({
-  databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
+  databaseURI: databaseUri || 'mongodb://heroku_4pfj8n75:uhuaoapp4ldvsjdqb846l73po5@ds131109.mlab.com:31109/heroku_4pfj8n75',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-  appId: process.env.APP_ID || 'myAppId',
-  masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
-  serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
+  appId: process.env.APP_ID || 'fHbRTxXoHWO5hvekgxjTtKHbzA3YfscitEOVV7IY',
+  masterKey: process.env.MASTER_KEY || 'PH36lMNiNYsJIvmDwnWibJL90D6bJ0290b8pypWe', //Add your master key here. Keep it secret!
+  serverURL: process.env.SERVER_URL || 'http://rpsavas.herokuapp.com/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
-  }
+  },
+    push: {
+  	ios: [
+    	{
+      		pfx: '/Users/Murph/Desktop/Extra\ Files/Certificates\ and\ Profiles/RPSavvyDevParse.p12’, // Dev PFX or P12
+      		bundleId: ‘com.Strategyn-Mobile-Pros.RPSavvy’,
+      		production: false // Dev
+    	},
+    	{
+      		pfx: '/Users/Murph/Desktop/Extra\ Files/Certificates\ and\ Profiles/RPSavvyProdParse.p12', // Prod PFX or P12
+      		bundleId: ‘com.Strategyn-Mobile-Pros.RPSavvy’,  
+      		production: true // Prod
+    }
+  ]
+ }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
